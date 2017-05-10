@@ -1,3 +1,14 @@
+# hAPI 
+The hAPI library is a tool to interface Processing with the open-sourced Haply Development Kit and Hapkit haptic devices. Here you will find the documenation on how to assemble the Haply and Hapkit hardware as well as how to configure the associated development frameworks, Arduino.cc and Processing.org.
+
+The detailed documentation can be found at: https://haphub.github.io/hAPI/
+
+see also: https://haphub.github.io/hAPI_Fisica/ for information on how the hAPI interfaces with the hAPI Fisica physics engine to allow haptic interaction with JBox2D.
+
+For any questions or concerns please email Colin Gallacher at crgallacher@gmail.com
+
+
+
 The hAPI: A DEVELOPER’S GUIDE
 
 Getting Started: Device Assembly and INstallation 
@@ -10,9 +21,6 @@ The hAPI has been initially developed for use in the World Haptics Conference 20
 
 Good luck!
 
-![image alt text](./img/image_0.png)
-
-![image alt text](./img/image_1.png)
 
 **_**Tip: This document is intended to be viewed online. Make sure View/Print Layout is unchecked in the menu to avoid unwanted page breaks._*** *
 
