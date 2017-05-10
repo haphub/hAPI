@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <Encoder.h>
 #include <pwm01.h>
-#include "Haply_Arduino_Control.h"
+#include "Haply_Arduino_Velocity.h"
 
 
 
@@ -44,6 +44,7 @@ int  		number_of_motors;
 
 /* communication interface control, defines response to send */
 byte 		reply_code = 3;
+byte    initialized = 0;
 
 
 /* Iterator and debug definitions **************************************************************/
@@ -73,6 +74,17 @@ void loop() {
     
 		lastPublish = micros();
 
+     read_encoder(&Motor1); 
+     read_encoder(&Motor2); 
+     read_encoder(&Motor3); 
+     read_encoder(&Motor4); 
+
+     create_torque(&Motor1,Motor1.torque); 
+     create_torque(&Motor2,Motor2.torque); 
+     create_torque(&Motor3,Motor3.torque); 
+     create_torque(&Motor4,Motor4.torque); 
+
+
 		if(SerialUSB.available() > 0){
       
 			cmd_code = command_instructions(SerialUSB.read(), &number_of_motors, motors_active);
@@ -81,6 +93,7 @@ void loop() {
 				case 0:
 					device_address = setup_actuators(&Motor1, &Motor2, &Motor3, &Motor4, number_of_motors, motors_active);
 					reply_code = 0;
+          initialized = 1;
 					break;
 				case 1:
 					device_address = write_torques(&Motor1, &Motor2, &Motor3, &Motor4, number_of_motors, motors_active);
@@ -90,20 +103,14 @@ void loop() {
 					break; 
 			}
 		}
-		else{
 
-			switch(reply_code){
-				case 0:
-					reply_code = 3;
-					break;
-				case 1:
-					read_encoders(&Motor1, &Motor2, &Motor3, &Motor4, number_of_motors, device_address, motors_active);
-					reply_code = 3;
-					break;
-				default:
-					break; 
-			} 
-		}
+    // update encoder
+    if(initialized){
+      read_encoders(&Motor1, &Motor2, &Motor3, &Motor4, number_of_motors, device_address, motors_active, reply_code);
+      reply_code = 3;
+    }
+
+    
 	}
 }
 
