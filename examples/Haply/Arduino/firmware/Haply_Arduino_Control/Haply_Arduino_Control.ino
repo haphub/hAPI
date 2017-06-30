@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <Encoder.h>
 #include <pwm01.h>
-#include "Haply_Arduino_Velocity.h"
+#include "Haply_Arduino.h"
 
 
 
