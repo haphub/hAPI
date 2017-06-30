@@ -129,7 +129,7 @@ void setup() {
   s.h_avatar.setDensity(2); 
   s.h_avatar.setFill(255,0,0); 
   s.init(world, edgeTopLeftX+worldWidth/2, edgeTopLeftY+2); 
-  haply_avatar = loadImage("../img/Haply_avatar.png"); 
+  haply_avatar = loadImage("./img/Haply_avatar.png"); 
   haply_avatar.resize((int)(hAPI_Fisica.worldToScreen(1)), (int)(hAPI_Fisica.worldToScreen(1)));
   s.h_avatar.attachImage(haply_avatar); 
 
